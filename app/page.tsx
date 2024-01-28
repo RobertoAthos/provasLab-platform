@@ -1,113 +1,140 @@
 import Image from "next/image";
+import logo from "@/assets/logo.png";
+import Link from "next/link";
+import heroImg from "@/assets/hero-img.svg";
+import vector1 from "@/assets/Vector 1.png";
+import vector2 from "@/assets/Vector 2.png";
+import box1 from "@/assets/box1.png";
+import box2 from "@/assets/box2.png";
+import box3 from "@/assets/box3.png";
+import linha from "@/assets/Vector 4.png";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header className="w-full p-4 max-w-screen-2xl m-auto flex justify-between items-center">
+        <div>
+          <Image src={logo} alt="Logo" />
         </div>
-      </div>
+        <nav>
+          <ul className="flex items-center gap-x-8">
+            <li className="hover:underline hover:text-blue-light">
+              <Link href="/">Início</Link>
+            </li>
+            <li className="hover:underline hover:text-blue-light">
+              <Link href="/">Sobre</Link>
+            </li>
+            <li className="hover:underline hover:text-blue-light">
+              <Link href="/">Serviços</Link>
+            </li>
+            <li className="bg-blue-light text-white p-3 rounded-lg hover:underline">
+              <Link href="/">Entrar na lista de espera</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section id="hero" className="w-full bg-blue-light-2 p-4 relative">
+          <Image
+            src={vector1}
+            alt="vector"
+            className="w-auto absolute right-0 top-48"
+          />
+          <Image
+            src={vector2}
+            alt="vector-2"
+            className="hidden xl:flex w-auto absolute left-0 bottom-0 top-72"
+          />
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          <div className="w-full max-w-screen-2xl m-auto flex justify-between items-center">
+            <div className="w-full max-w-[778px]">
+              <h1 className="text-black text-4xl leading-[50px] font-semibold">
+                O Futuro do Ensino Começa Aqui: Descubra Como{" "}
+                <span className="text-blue-light">
+                  Facilitamos a Vida dos Professores no Desenvolvimento e
+                  Avaliação de Atividades.
+                </span>
+              </h1>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+              <p className="text-[#5C5C5C] mt-6">
+                Transforme sua sala de aula em uma ferramenta poderosa para
+                Professores que Querem Mais do Seu Tempo. Descubra Como
+                facilitamos sua vida no desenvolvimento e Avaliação de
+                Atividades.
+              </p>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+              <button className="bg-primary-gradient text-white p-3 rounded-lg mt-12 hover:underline">
+                Seja a primeira pessoa a testar nossa plataforma
+              </button>
+            </div>
+            <div>
+              <Image
+                src={heroImg}
+                alt="professor criando atividades e provas"
+                className="w-auto h-auto z-0"
+              />
+            </div>
+          </div>
+        </section>
+        <div className="w-full border-b border-b-slate-200 p-8">
+          <div className="w-full max-w-screen-2xl m-auto flex justify-between items-center">
+            <div className="flex items-center gap-x-4">
+              <Image src={box1} alt="box1" />
+              <div>
+                <span className="font-semibold text-xl">
+                  Criar atividade/testes
+                </span>
+                <p className="text-[#5C5C5C]">Nossa IA cria para você</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-4">
+              <Image src={box2} alt="box1" />
+              <div>
+                <span className="font-semibold text-xl">
+                  Faça correções 10x mais rápido
+                </span>
+                <p className="text-[#5C5C5C]">Nossa IA corrige para você</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-4">
+              <Image src={box3} alt="box1" />
+              <div>
+                <span className="font-semibold text-xl">
+                  Planejamos a sua aula em um click
+                </span>
+                <p className="text-[#5C5C5C]">Nossa IA planeja a sua aula</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        <section className="w-full mt-24 p-8">
+          <div className="w-full max-w-screen-2xl m-auto relative">
+            <div className="text-center clear-start">
+              <h2 className="text-4xl w-full max-w-[772px] m-auto font-semibold leading-[50px]">
+                Você já viu uma{" "}
+                <span className="text-blue-light">Inteligência Artificial</span>{" "}
+                exclusiva para professores?
+              </h2>
+              <p className="w-full max-w-[730px] m-auto pt-5 text-center text-[#5C5C5C]">
+                Compreendemos que a rotina do profissional da educação é intensa
+                e demanda um tempo considerável para a elaboração de atividades
+                ou avaliações para os alunos. Às vezes, a criatividade fica em
+                segundo plano diante da falta de tempo. Permita-nos ser a
+                solução para isso.
+              </p>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+              <button className="mt-8 border-blue-light border p-3 rounded-lg text-blue-light hover:underline">
+                Quero testar a plataforma!
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full mt-24 p-8">
+
+        </section>
+      </main>
+    </>
   );
 }
