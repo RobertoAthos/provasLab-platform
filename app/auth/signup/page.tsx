@@ -1,4 +1,4 @@
-import SingupForm from '@/components/auth/SingupForm'
+import SignupForm from '@/components/auth/SignupForm'
 import React from 'react'
 
 export default function RegisterUser() {
@@ -10,7 +10,7 @@ export default function RegisterUser() {
                 <span>Cadastre-se para começar</span>
               </div>
               <div className='mt-[40px]'>
-                <SingupForm/>
+                <SignupForm/>
               </div>
             </div>    
         </div> 
