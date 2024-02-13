@@ -17,11 +17,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="pt-br">
-      <body className={poppins.className}>
-          {children}
-      </body>
-    </html>
-  );
+  return <div className={poppins.className}>{children}</div>;
 }

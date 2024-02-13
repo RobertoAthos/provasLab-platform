@@ -19,13 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={poppins.className}>
-          <section className="flex">
-            <SideScreen />
-            {children}
-          </section>
-      </body>
-    </html>
+    <section className="flex">
+      <SideScreen />
+      {children}
+    </section>
   );
 }
