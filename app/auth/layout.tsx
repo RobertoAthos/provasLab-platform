@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import SideScreen from "@/components/auth/SideScreen";
 
-const inter = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -20,13 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>
-        <main>
+      <body className={poppins.className}>
           <section className="flex">
             <SideScreen />
             {children}
           </section>
-        </main>
       </body>
     </html>
   );

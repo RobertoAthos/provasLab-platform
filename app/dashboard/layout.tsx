@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import Providers from "@/Providers";
+import "../globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,8 +8,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ProvasLab | IA para professores",
-  description: "Inteligência artificial feita para professores",
+  title: "ProvasLab | Dashboard",
+  description: "IA para professores",
 };
 
 export default function RootLayout({
@@ -21,9 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={poppins.className}>
-        <Providers>
-          <main>{children}</main>
-        </Providers>
+          {children}
       </body>
     </html>
   );
