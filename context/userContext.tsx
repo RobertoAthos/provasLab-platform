@@ -6,14 +6,17 @@ import {
   createUserWithEmailAndPassword as createUser,
   signInWithEmailAndPassword as signIn,
   signOut as signOutUser,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { updateProfile } from "firebase/auth";
-import { app } from "@/firebase";
 import { useRouter } from "next/navigation";
+import { app } from "@/firebase";
+import { deleteCookie, setCookie } from "cookies-next";
 
 const auth = getAuth(app);
 
 type TUser = {
+  accessToken: Promise<string> | undefined;
   email: string;
   displayName: string;
   emailVerified: string;
@@ -22,6 +25,7 @@ type TUser = {
 
 export type UserContextType = {
   user: TUser | null;
+  error: string | null;
   signUpUser: (email: string, password: string, name: string) => Promise<void>;
   signInUser: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -33,41 +37,52 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<TUser | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const signUpUser = async (email: string, password: string, name: string) => {
     try {
-      await createUser(auth, email, password);
+      await createUser(auth, email, password).then((user) => {
+        if (user.user) {
+          updateProfile(user.user, {
+            displayName: name,
+          });
 
-      const user = auth.currentUser;
-      if (user) {
-        await updateProfile(user, {
-          displayName: name,
-        });
-
-        setUser({
-          email: user.email || "",
-          displayName: user.displayName || "",
-          emailVerified: String(user.emailVerified),
-          uid: user.uid,
-        });
+          setUser({
+            email: user.user.email || "",
+            displayName: user.user.displayName || "",
+            emailVerified: String(user.user.emailVerified),
+            uid: user.user.uid,
+            accessToken: user.user.getIdToken(),
+          });
+        }
+        setCookie("access_token", user.user.getIdToken());
+        router.push("/platform/dashboard");
+      });
+    } catch (error: any) {
+      if (error.message === "Firebase: Error (auth/invalid-credential).") {
+        setError("Email ou senha inválidos");
       }
-    } catch (error) {
-      console.log(error);
+      console.log("register error", error);
     }
   };
 
   const signInUser = async (email: string, password: string) => {
     try {
       await signIn(auth, email, password);
-    } catch (error) {
-      console.log(error);
+      router.push("/platform/dashboard");
+    } catch (error: any) {
+      if (error.message === "Firebase: Error (auth/invalid-credential).") {
+        setError("Email ou senha inválidos");
+      }
+      console.log("login error", error);
     }
   };
 
   const signOut = async () => {
     try {
       await signOutUser(auth);
+      deleteCookie("access_token")
       router.push("/auth/signin");
     } catch (error) {
       console.log(error);
@@ -75,26 +90,32 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser({
-          email: user.email || "",
-          displayName: user.displayName || "",
-          emailVerified: String(user.emailVerified),
-          uid: user.uid,
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser({
+        displayName: user?.displayName || "",
+        email: user?.email || "",
+        emailVerified: String(user?.emailVerified),
+        uid: user?.uid || "",
+        accessToken: user?.getIdToken(),
+      });
+      if (user?.getIdToken) {
+        user.getIdToken().then(token => {
+          setCookie("access_token", token);
         });
-      } else {
-        setUser(null);
       }
     });
+
+ 
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [user?.accessToken]);
 
   return (
-    <UserContext.Provider value={{ user, signUpUser, signInUser, signOut }}>
+    <UserContext.Provider
+      value={{ user, error, signUpUser, signInUser, signOut }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -2,7 +2,6 @@
 import { useUser } from "@/context/userContext";
 import { signInUserSchema } from "@/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { IoLockClosedSharp } from "react-icons/io5";
@@ -16,8 +15,7 @@ interface IUserLogin {
 }
 
 export default function SigninForm() {
-  const { signInUser } = useUser();
-  const router = useRouter();
+  const { signInUser,error } = useUser();
   const {
     register,
     handleSubmit,
@@ -29,7 +27,6 @@ export default function SigninForm() {
   const handleSignIn = async (data: IUserLogin) => {
     try {
       await signInUser(data.email, data.password);
-      router.push("/dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +56,12 @@ export default function SigninForm() {
           name="password"
         />
       </div>
-        <FieldErrorMessage error={errors.password}/>
+      <FieldErrorMessage error={errors.password}/>
+      {error && (
+        <div className="mt-4 bg-red-200 text-red-700 p-4 rounded-lg">
+          {error}
+        </div>
+      )}
       <button className="bg-medium-blue hover:bg-blue-800 text-white font-normal p-6 w-full rounded-full">
         {isSubmitting ? <Spinner/> : "Fazer login"}
       </button>
