@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import SideBar from "@/components/SideBar";
+import Footer from "@/components/dashboard/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,11 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className={`${poppins.className} flex items-start`} id="dashboard">
-      <aside className="w-72">
-        <SideBar/>
-      </aside>
-      {children}
-    </section>
+    <div className={`${poppins.className} w-full flex h-screen bg-[#F8F9FA]`} id="dashboard">
+      <SideBar/>
+      <section className="flex flex-col w-full h-full ml-60">
+        {children}
+        <Footer/>
+      </section>
+    </div>
   )
 }
