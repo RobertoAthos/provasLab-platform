@@ -1,6 +1,6 @@
 import { IoHome, IoStatsChart } from "react-icons/io5";
 import { HiOutlineDocumentCheck } from "react-icons/hi2";
-import { IoMdStar,IoIosRocket } from "react-icons/io";
+import { IoMdStar } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
 import { BsCreditCardFill } from "react-icons/bs";
 
@@ -37,11 +37,6 @@ export const sideBarOptions = {
             icon: BsCreditCardFill,
             label: "Pagamentos",
             href: '/platform/dashboard/profile/payments'
-        },
-        {
-            icon: IoIosRocket,
-            label: "Sair",
-            href: '/auth/signin'
         },
     ]
 }

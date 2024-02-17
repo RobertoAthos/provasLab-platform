@@ -1,14 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/logo.svg";
 import Image from "next/image";
 import { sideBarOptions } from "@/utils/sideBarOptions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IoIosRocket } from "react-icons/io";
+import { useUser } from "@/context/userContext";
+import SimplePageLoader from "./SimplePageLoader";
 
 export default function SideBar() {
+  const [isLogout, setIsLogout] = useState(false)
+  const {signOut} = useUser()
   const pathname = usePathname();
-  const buttonStyle =
+  const linkStyle =
     "hover:border hover:border-green-light hover:text-green-light hover:rounded-lg";
 
   return (
@@ -25,7 +30,7 @@ export default function SideBar() {
               className={`flex items-center gap-x-4 p-3 ${
                 pathname === item.href
                   ? " bg-green-light text-white rounded-lg"
-                  : buttonStyle
+                  : linkStyle
               }`}
             >
               <item.icon
@@ -46,7 +51,7 @@ export default function SideBar() {
               className={`flex items-center gap-x-4 p-3 ${
                 pathname === item.href
                   ? " bg-green-light text-white rounded-lg"
-                  : buttonStyle
+                  : linkStyle
               }`}
             >
               <item.icon
@@ -57,8 +62,20 @@ export default function SideBar() {
               <li className="font-semibold">{item.label}</li>
             </Link>
           ))}
+          <button
+            className={`w-full flex items-center gap-x-4 p-3 font-semibold text-lg ${linkStyle}`}
+            onClick={() => {
+              setIsLogout(true)
+              signOut()
+            }}
+          >
+            <IoIosRocket size={24} /> Sair
+          </button>
         </ul>
       </nav>
+      {isLogout && (
+         <SimplePageLoader/>
+      )}
     </aside>
   );
 }

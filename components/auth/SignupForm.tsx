@@ -76,7 +76,7 @@ export default function SignupForm() {
           {error}
         </div>
       )}
-      <button className="bg-medium-blue hover:bg-blue-800 text-white font-normal p-6 w-full rounded-full">
+      <button className="flex justify-center items-center bg-medium-blue hover:bg-blue-800 text-white font-normal p-6 w-full rounded-full">
         {isSubmitting ? <Spinner/> : "Fazer cadastro"}
       </button>
     </form>

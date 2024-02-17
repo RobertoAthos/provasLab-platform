@@ -8,9 +8,9 @@ export default function LoginUser() {
       <div>
         <div className="text-dark-gray">
           <h3 className="font-bold text-[26px]">
-            Olá <span className="text-green-light">de novo!</span>
+            Olá, <span className="text-green-light">de novo!</span>
           </h3>
-          <span>É bom ter você mais uma vez aqui</span>
+          <span>É bom ter você mais uma vez aqui.</span>
         </div>
         <div className="mt-[40px]">
           <SigninForm />

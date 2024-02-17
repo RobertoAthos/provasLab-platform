@@ -3,11 +3,12 @@ import { useUser } from "@/context/userContext";
 import React from "react";
 import { HiOutlineDocumentCheck } from "react-icons/hi2";
 import { SlBookOpen } from "react-icons/sl";
+import SimplePageLoader from "../SimplePageLoader";
 
 export default function Greetings() {
   const { user } = useUser();
   if (!user) {
-    return "carregando...";
+    return <SimplePageLoader/>;
   }
   const nameArray = user.displayName.split(" ");
   const firstLetterFirstName = nameArray[0].charAt(0);

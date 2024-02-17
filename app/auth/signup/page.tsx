@@ -8,7 +8,7 @@ export default function RegisterUser() {
       <div>
         <div className="text-dark-gray">
           <h3 className="font-bold text-[26px]">Olá!</h3>
-          <span>Cadastre-se para começar</span>
+          <span>Cadastre-se para começar.</span>
         </div>
         <div className="mt-[40px]">
           <SignupForm />

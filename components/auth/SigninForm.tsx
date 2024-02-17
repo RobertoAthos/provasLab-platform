@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useUser } from "@/context/userContext";
 import { signInUserSchema } from "@/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +8,7 @@ import { IoLockClosedSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import FieldErrorMessage from "../FieldError";
 import Spinner from "../Spinner";
+import Link from "next/link";
 
 interface IUserLogin {
   email: string;
@@ -15,7 +16,7 @@ interface IUserLogin {
 }
 
 export default function SigninForm() {
-  const { signInUser,error } = useUser();
+  const { signInUser, error } = useUser();
   const {
     register,
     handleSubmit,
@@ -45,7 +46,7 @@ export default function SigninForm() {
           name="email"
         />
       </div>
-        <FieldErrorMessage error={errors.email}/>
+      <FieldErrorMessage error={errors.email} />
       <div className={inputStyle}>
         <IoLockClosedSharp size={24} className="text-slate-300" />
         <input
@@ -56,14 +57,21 @@ export default function SigninForm() {
           name="password"
         />
       </div>
-      <FieldErrorMessage error={errors.password}/>
+      <FieldErrorMessage error={errors.password} />
       {error && (
         <div className="mt-4 bg-red-200 text-red-700 p-4 rounded-lg">
           {error}
         </div>
       )}
-      <button className="bg-medium-blue hover:bg-blue-800 text-white font-normal p-6 w-full rounded-full">
-        {isSubmitting ? <Spinner/> : "Fazer login"}
+      <div className="mt-2 text-right">
+      <Link href="/">
+        <span className="text-light-gray underline">
+          Esqueci a senha
+        </span>
+      </Link>
+      </div>
+      <button className="flex justify-center items-center bg-medium-blue hover:bg-blue-800 text-white font-normal p-6 w-full rounded-full">
+        {isSubmitting ? <Spinner /> : "Fazer login"}
       </button>
     </form>
   );
