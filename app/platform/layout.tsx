@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
+import SideBar from "@/components/SideBar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,5 +18,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className={poppins.className}>{children}</div>;
+  return (
+    <section className={`${poppins.className} flex`} id="dashboard">
+      <aside>
+        <SideBar/>
+      </aside>
+      {children}
+    </section>
+  )
 }

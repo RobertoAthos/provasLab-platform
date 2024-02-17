@@ -1,3 +1,7 @@
+#dashboard{
+    background-color: #F8F9FA;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
