@@ -91,13 +91,15 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser({
-        displayName: user?.displayName || "",
-        email: user?.email || "",
-        emailVerified: String(user?.emailVerified),
-        uid: user?.uid || "",
-        accessToken: user?.getIdToken(),
-      });
+      if(user){
+        setUser({
+          displayName: user.displayName || "",
+          email: user.email || "",
+          emailVerified: String(user?.emailVerified),
+          uid: user.uid || "",
+          accessToken: user?.getIdToken(),
+        });
+      }
       if (user?.getIdToken) {
         user.getIdToken().then(token => {
           setCookie("access_token", token);

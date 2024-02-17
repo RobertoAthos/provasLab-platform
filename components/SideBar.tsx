@@ -19,7 +19,7 @@ export default function SideBar() {
       }
   };
   return (
-    <div className="w-60 p-4 h-screen pt-[70px] bg-white shadow-md">
+    <div className="w-60 p-4 h-screen absolute pt-[70px] bg-white shadow-md">
       <div className="w-full flex justify-center items-center mb-8 border-b border-b-gray-300">
         <Image src={Logo} alt="Logo" width={200} height={200} />
       </div>

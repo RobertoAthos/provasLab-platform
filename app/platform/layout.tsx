@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className={`${poppins.className} flex`} id="dashboard">
-      <aside>
+    <section className={`${poppins.className} flex items-start`} id="dashboard">
+      <aside className="w-72">
         <SideBar/>
       </aside>
       {children}

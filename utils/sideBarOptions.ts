@@ -14,29 +14,29 @@ export const sideBarOptions = {
         {
             icon: HiOutlineDocumentCheck,
             label: "Exercícios",
-            href: '/platform/exercises'
+            href: '/platform/dashboard/exercises'
         },
         {
             icon: IoStatsChart,
             label: "Planos de aula",
-            href: '/platform/class-plan'
+            href: '/platform/dashboard/class-plan'
         },
         {
             icon: IoMdStar,
             label: "Favoritos",
-            href: '/platform/favorites'
+            href: '/platform/dashboard/favorites'
         },
     ],
     account:[
         {
             icon: FaUser,
             label: "Meu perfil",
-            href: '/platform/profile'
+            href: '/platform/dashboard/profile'
         },
         {
             icon: BsCreditCardFill,
             label: "Pagamentos",
-            href: '/platform/payments'
+            href: '/platform/dashboard/profile/payments'
         },
         {
             icon: IoIosRocket,
