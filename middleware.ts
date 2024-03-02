@@ -12,6 +12,10 @@ export function middleware(request: NextRequest) {
       }
       return NextResponse.redirect(signinURL);
     }
+
+    if(token && url === "auth/signin") {
+      return NextResponse.redirect("/platform/dashboard")
+    }
 }  
 
 export const config = {

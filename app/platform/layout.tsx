@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <div className={`${poppins.className} w-full flex h-screen bg-[#F8F9FA]`} id="dashboard">
       <SideBar/>
-      <section className="flex flex-col w-full h-full ml-60">
+      <aside className="flex flex-col w-full h-full ml-60">
         {children}
         <Footer/>
-      </section>
+      </aside>
     </div>
   )
 }
