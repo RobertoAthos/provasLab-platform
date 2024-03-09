@@ -1,5 +1,4 @@
 import { subjects } from "@/utils/subjects";
-import React from "react";
 
 export default function ExerciseForm() {
   const inputStyle =
@@ -29,7 +28,9 @@ export default function ExerciseForm() {
       </div>
       <div className="flex flex-col">
         <label className={labelStyle}>Assunto(s) do exercício</label>
-        <input type="text" className={inputStyle} />
+        <div className="flex flex-wrap gap-2">
+          <input type="text" className={inputStyle} />
+        </div>
       </div>
       <div className="flex flex-col">
         <label className={labelStyle}>Tipo das questões</label>

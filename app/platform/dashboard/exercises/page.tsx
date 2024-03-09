@@ -4,9 +4,14 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function Exercises() {
+  const [createExercise, setCreateExercise] = useState(false);
   const param = useSearchParams();
 
-  const isCreateExercise = Boolean(param.get("create_exercise"));
+  useEffect(() => {
+    if (Boolean(param.get("create_exercise"))) {
+      setCreateExercise(true);
+    }
+  }, [param]);
 
-  return <div>{isCreateExercise && <CreateExerciseModal />}</div>;
+  return <div>{createExercise && <CreateExerciseModal closeModal={()=>setCreateExercise(false)}/>}</div>;
 }

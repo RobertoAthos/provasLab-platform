@@ -112,7 +112,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     return () => {
       unsubscribe();
     };
-  }, [user?.accessToken]);
+  }, []);
 
   return (
     <UserContext.Provider
