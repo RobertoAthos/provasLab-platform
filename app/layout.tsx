@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins  as FontSans } from "next/font/google"
 import "./globals.css";
 import Providers from "@/providers";
+import { cn } from "@/lib/utils";
 
-const poppins = Poppins({
+const fontSans = FontSans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+  variable: "--font-sans",
+  weight: ["400", "600"],
+})
 
 export const metadata: Metadata = {
   title: "ProvasLab | IA para professores",
@@ -19,8 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={poppins.className}>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className={cn(
+          "font-sans antialiased",
+          fontSans.variable
+        )}>
         <main>
           <Providers>
             {children}
